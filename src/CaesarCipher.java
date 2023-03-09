@@ -14,7 +14,6 @@ public class CaesarCipher {
                 builder.append(charAt);
             }
         }
-
         return builder.toString();
     }
 

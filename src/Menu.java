@@ -18,7 +18,6 @@ public class Menu {
             String answer = reader.readLine();
             switch (answer) {
                 case "1" -> new Encrypted().encrypted();
-                
                 case "2" -> System.out.println("Расшифровать текст с помощью ключа");
                 case "3" -> System.out.println("Подобрать ключ.");
                 case "4" -> System.out.println("Расшифровать текст с помощью синтаксического анализа.");
