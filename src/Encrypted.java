@@ -12,7 +12,7 @@ import java.util.Scanner;
 // Получить вариант зашифрованного текста. Посмотреть почему не верное форматирование.
 // Написать класс Decrypted. Аналог класса Encrypted.
 // Написать общий метод, который бы работал как Encrypted и Decrypted, что бы избавиться от дублирующего кода.
-// *Изучить класс Path/File. Подумай как не спрашивать у пользователя путь для записи зашиврованного/расшифрованного файла.
+// *Изучить класс Path/File. Подумай как не спрашивать у пользователя путь для записи зашифрованного/расшифрованного файла.
 // *Подумай как можно добавить суффикс к названию файла:
   // - Если расшифровали, добавь суффикс _encrypted
   // - Если зашифровали, добавь суффикс _decrypted
@@ -27,10 +27,9 @@ public class Encrypted {
         System.out.println("Введите путь к файлу для зашифровки");
         String path = scanner.nextLine();
         System.out.println("Введите ключ шифрования");
-        int key = scanner.nextInt();
-        System.out.println("Введите путь, для записи зашифрованного текста");
+        int key = Integer.parseInt(scanner.nextLine());
+        System.out.println("Введите путь для записи зашифрованного текста");
         String path2 = scanner.nextLine();
-
 
         try (BufferedReader reader = Files.newBufferedReader(Paths.get(path));
              BufferedWriter writer = Files.newBufferedWriter(Paths.get(path2))) {
@@ -40,11 +39,7 @@ public class Encrypted {
                 writer.write(encrypt);
             }
         }
-
         System.out.println("Содержимое файла было зашифровано");
-
-
-
     }
 
 }

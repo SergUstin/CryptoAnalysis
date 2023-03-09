@@ -8,17 +8,19 @@ public class Menu {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
-            System.out.println("Выбирите действие введя его номер: " +
-                    "1. Заштфровать текст с помощью ключа. " +
-                    "2. Расшифровать текст с помощью ключа. " +
-                    "3. Подобрать ключ." +
-                    "4. Расшифровать текст с помощью синтаксического анализа. " +
-                    "5. Выход из программы. ");
+            System.out.println("""
+                    Выберите действие введя его номер:\s
+                    1. Зашифровать текст с помощью ключа.\s
+                    2. Расшифровать текст с помощью ключа.\s
+                    3. Подобрать ключ.
+                    4. Расшифровать текст с помощью синтаксического анализа.\s
+                    5. Выход из программы.\s
+                    """);
 
             String answer = reader.readLine();
             switch (answer) {
                 case "1" -> new Encrypted().encrypted();
-                case "2" -> System.out.println("Расшифровать текст с помощью ключа");
+                case "2" -> new Decrypted().decrypted();
                 case "3" -> System.out.println("Подобрать ключ.");
                 case "4" -> System.out.println("Расшифровать текст с помощью синтаксического анализа.");
                 case "5" -> {
