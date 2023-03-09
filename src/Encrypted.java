@@ -29,6 +29,7 @@ public class Encrypted {
         System.out.println("Введите ключ шифрования");
         int key = scanner.nextInt();
         System.out.println("Введите путь, для записи зашифрованного текста");
+
         String path2 = scanner.nextLine();
 
 
