@@ -21,6 +21,7 @@ public class Bruteforce {
 
         Path bruteforce = PathHelper.buildFullName(path, "_bruteforce");
 
+
         try (BufferedReader reader = Files.newBufferedReader(Paths.get(path));
              BufferedWriter writer = Files.newBufferedWriter(bruteforce)) {
             StringBuilder builder = new StringBuilder();
