@@ -19,9 +19,9 @@ public class Menu {
 
             String answer = reader.readLine();
             switch (answer) {
-                case "1" -> new Encrypted().encrypted();
-                case "2" -> new Decrypted().decrypted();
-                case "3" -> System.out.println("Подобрать ключ.");
+                case "1" -> new EncryptedDecrypted().encryptedDecrypted(true);
+                case "2" -> new EncryptedDecrypted().encryptedDecrypted(false);
+                case "3" -> new Bruteforce().bruteforce();
                 case "4" -> System.out.println("Расшифровать текст с помощью синтаксического анализа.");
                 case "5" -> {
                     return;

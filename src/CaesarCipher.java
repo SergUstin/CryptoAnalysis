@@ -1,5 +1,6 @@
-public class CaesarCipher {
 
+
+public class CaesarCipher {
     private static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz" + "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
             "абвгдеёжзийклмнопрстуфхцчшщъыьэюя" + "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ" +
             ".,\":!? +-*/\\@#$%^&(){}[];'|`~=_©«»—" + "0123456789";
@@ -19,5 +20,9 @@ public class CaesarCipher {
 
     public String decrypt(String massage, int key) {
         return encrypt(massage, key * -1);
+    }
+
+    public int alphabetLength () {
+        return ALPHABET.length();
     }
 }
