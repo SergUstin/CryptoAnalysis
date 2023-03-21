@@ -38,7 +38,8 @@ public class Bruteforce {
                         String encrypt = caesarCipher.decrypt(string, i);
                         writer.write(encrypt + System.lineSeparator());
                     }
-                    System.out.println("Содержимое файла расшифровано, методом подбора ключей. Ключ расшифровки K = " + i);
+                    System.out.println("Содержимое файла расшифровано, методом подбора ключей. Ключ расшифровки K = "
+                            + i + System.lineSeparator());
                     break;
                 }
             }
