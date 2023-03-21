@@ -1,8 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Scanner;
 
 public class Menu {
     public static void main(String[] args) throws IOException {
@@ -22,7 +20,7 @@ public class Menu {
                 case "1" -> new EncryptedDecrypted().encryptedDecrypted(true);
                 case "2" -> new EncryptedDecrypted().encryptedDecrypted(false);
                 case "3" -> new Bruteforce().bruteforce();
-                case "4" -> System.out.println("Расшифровать текст с помощью синтаксического анализа.");
+                case "4" -> new Parsing().parse();
                 case "5" -> {
                     return;
                 }
