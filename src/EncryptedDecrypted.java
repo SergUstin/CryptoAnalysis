@@ -20,6 +20,9 @@ public class EncryptedDecrypted {
 
         Path newPath = PathHelper.buildFullName(path, flag ? "_encrypted" : "_decrypted");
 
+        String content = Files.readString(Path.of(path)); // получаем все содержимое ввиде строки
+        Files.writeString(newPath, content); // запись всего содержимого по указанному адресу
+
         try (BufferedReader reader = Files.newBufferedReader(Paths.get(path));
              BufferedWriter writer = Files.newBufferedWriter(newPath)) {
             while (reader.ready()) {

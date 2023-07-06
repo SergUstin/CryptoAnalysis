@@ -1,6 +1,9 @@
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
+// Переимоновать класс в Util, добавить три статических метода, для вывода и чтение строки, чтения, числа
+// ИСпользоватьл буфер ридер как основной способ
+// Удалить Scanner и BufferReader
+// Подключить к проекту maven
 public class PathHelper {
     private PathHelper() {
 
