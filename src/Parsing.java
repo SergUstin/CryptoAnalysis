@@ -8,18 +8,19 @@ import java.util.*;
 
 public class Parsing {
 
-    private final Scanner scanner = new Scanner(System.in);
+//    private final Scanner scanner = new Scanner(System.in);
     private final Map<Character, Integer> encrypted = new HashMap<>();
     private final Map<Character, Integer> statistic = new HashMap<>();
     private final Map<Character, Character> decrypted = new HashMap<>();
 
     public void parse () throws IOException {
-        System.out.println("Введите путь до зашифрованного файла");
-        String path = scanner.nextLine();
-        System.out.println("Введите путь к файлу для набора статистики");
-        String pathStatistic = scanner.nextLine();
+        StringBuilder builder = new StringBuilder();
+        Util.print("Введите путь до зашифрованного файла");
+        String path = Util.readConsole();
+        Util.print("Введите путь к файлу для набора статистики");
+        String pathStatistic = Util.readConsole();
 
-        Path parsing = PathHelper.buildFullName(path, "_statistic");
+        Path parsing = Util.buildFullName(path, "_statistic");
 
         List<Map.Entry<Character, Integer>> listEncrypted = mapToList(fillMapValues(encrypted, path));
         List<Map.Entry<Character, Integer>> listStatistic = mapToList(fillMapValues(statistic, pathStatistic));
@@ -30,41 +31,61 @@ public class Parsing {
                 decrypted.put(listEncrypted.get(i).getKey(), listStatistic.get(i).getKey());
             }
         } else {
-            System.out.println("Размер файла статистики меньше, предоставьте файл больше!");
+            Util.print("Размер файла статистики меньше, предоставьте файл больше!");
         }
 
-        try (BufferedReader reader = Files.newBufferedReader(Paths.get(path));
-             BufferedWriter writer = Files.newBufferedWriter(parsing)) {
-            while (reader.ready()) {
-                StringBuilder builder = new StringBuilder();
-                String string = reader.readLine();
-                for (char encryptedChar : string.toCharArray()) {
-                    Character decryptedChar = decrypted.get(encryptedChar);
-                    builder.append(decryptedChar);
-                }
-                writer.write(builder + System.lineSeparator());
-            }
+        String string = Util.readFile(path);
+        for (char encryptedChar : string.toCharArray()) {
+            Character decryptedChar = decrypted.get(encryptedChar);
+            builder.append(decryptedChar);
         }
+        Util.writeFile(parsing, builder + System.lineSeparator());
 
-        System.out.println("Содержимое файла расшифровано методом статистического анализа!" + System.lineSeparator());
+
+//        try (BufferedReader reader = Files.newBufferedReader(Paths.get(path));
+//             BufferedWriter writer = Files.newBufferedWriter(parsing)) {
+//            while (reader.ready()) {
+//                StringBuilder builder = new StringBuilder();
+//                String string = reader.readLine();
+//                for (char encryptedChar : string.toCharArray()) {
+//                    Character decryptedChar = decrypted.get(encryptedChar);
+//                    builder.append(decryptedChar);
+//                }
+//                writer.write(builder + System.lineSeparator());
+//            }
+//        }
+
+        Util.print("Содержимое файла расшифровано методом статистического анализа!" + System.lineSeparator());
     }
 
     private Map<Character, Integer> fillMapValues (Map<Character, Integer> map, String path) throws IOException {
 
-        try (BufferedReader reader = Files.newBufferedReader(Path.of(path))) {
-            StringBuilder builder = new StringBuilder();
-            while (reader.ready()) {
-                builder.append(reader.readLine());
-            }
-            for (char aChar : builder.toString().toCharArray()) {
-                if (!map.containsKey(aChar)) {
-                    map.put(aChar, 1);
-                } else {
-                    map.put(aChar, map.get(aChar) + 1);
-                }
-//                encrypted.merge(aChar, 1, Integer::sum);
+        StringBuilder builder = new StringBuilder();
+        builder.append(Util.readFile(path));
+        for (char aChar : builder.toString().toCharArray()) {
+            if (!map.containsKey(aChar)) {
+                map.put(aChar, 1);
+            } else {
+                map.put(aChar, map.get(aChar) + 1);
             }
         }
+
+
+//        try (BufferedReader reader = Files.newBufferedReader(Path.of(path))) {
+//            StringBuilder builder = new StringBuilder();
+//            while (reader.ready()) {
+//                builder.append(reader.readLine());
+//            }
+//            for (char aChar : builder.toString().toCharArray()) {
+//                if (!map.containsKey(aChar)) {
+//                    map.put(aChar, 1);
+//                } else {
+//                    map.put(aChar, map.get(aChar) + 1);
+//                }
+////                encrypted.merge(aChar, 1, Integer::sum);
+//            }
+//        }
+
         return map;
     }
 

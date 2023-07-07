@@ -6,7 +6,7 @@ public class Menu {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
-            System.out.println("""
+            Util.print("""
                     Выберите действие введя его номер:\s
                     1. Зашифровать текст с помощью ключа.\s
                     2. Расшифровать текст с помощью ключа.\s
