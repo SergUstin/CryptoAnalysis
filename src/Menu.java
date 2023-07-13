@@ -4,9 +4,9 @@ import java.io.InputStreamReader;
 
 public class Menu {
     public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
         while (true) {
-            Util.print("""
+            Util.writeMassage("""
                     Выберите действие введя его номер:\s
                     1. Зашифровать текст с помощью ключа.\s
                     2. Расшифровать текст с помощью ключа.\s
@@ -15,7 +15,7 @@ public class Menu {
                     5. Выход из программы.\s
                     """);
 
-            String answer = reader.readLine();
+            String answer = Util.readString();
             switch (answer) {
                 case "1" -> new EncryptedDecrypted().encryptedDecrypted(true);
                 case "2" -> new EncryptedDecrypted().encryptedDecrypted(false);

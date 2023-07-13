@@ -9,7 +9,10 @@ import java.nio.file.Paths;
 // Использовать буфер ридер как основной способ
 // Удалить Scanner и BufferReader
 // Подключить к проекту maven
+// Переделать с внесенными правками!!
 public class Util {
+    private static final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
     private Util() {
 
     }
@@ -29,20 +32,29 @@ public class Util {
         return parent.resolve(Path.of(newFileName));
     }
 
-    public static void print(String string) {
-        System.out.println(string);
+    public static void writeMassage(String massage) {
+        System.out.println(massage);
     }
 
-    public static String readConsole () throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        return reader.readLine();
+    public static String readString () {
+        String string;
+        try {
+            string = reader.readLine();
+        } catch (IOException e) {
+            writeMassage("Произошла ошибка при попытке ввода текста. Попробуйте еще раз!");
+            string = readString();
+        }
+        return string;
     }
 
-    public static String readFile(String path) throws IOException {
-        return Files.readString(Path.of(path));
-    }
-
-    public static void writeFile (Path newPath, String content) throws IOException {
-        Files.writeString(newPath, content);
+    public static int readInt () {
+        int number;
+        try {
+            number = Integer.parseInt(readString());
+        } catch (NumberFormatException e) {
+            writeMassage("Произошла ошибка при попытке ввода числа. Попробуйте еще раз!");
+            number = readInt();
+        }
+        return number;
     }
 }
