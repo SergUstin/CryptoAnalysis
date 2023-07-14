@@ -1,15 +1,10 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-// Переимоновать класс в Util, добавить три статических метода, для вывода и чтение строки, чтения числа
-// Использовать буфер ридер как основной способ
-// Удалить Scanner и BufferReader
-// Подключить к проекту maven
-// Переделать с внесенными правками!!
+// Найти причину игнорирования пробелов и переноса строки!!
 public class Util {
     private static final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
