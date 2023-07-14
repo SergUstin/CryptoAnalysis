@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Menu {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         while (true) {
             Util.writeMassage("""
@@ -15,8 +15,7 @@ public class Menu {
                     5. Выход из программы.\s
                     """);
 
-            String answer = Util.readString();
-            switch (answer) {
+            switch (Util.readString()) {
                 case "1" -> new EncryptedDecrypted().encryptedDecrypted(true);
                 case "2" -> new EncryptedDecrypted().encryptedDecrypted(false);
                 case "3" -> new Bruteforce().bruteforce();
